@@ -1,26 +1,30 @@
 #include "simple2drenderer.h"
+#include "Renderable2d.h"
 
-namespace Ruby { namespace Graphics {
+namespace Ruby {
+	namespace Graphics {
 
-	void Simple2dRenderer::submit(const Renderable2d* renderable)
-	{
-		m_RenderQueue.push_back(renderable);
-	}
-	void Simple2dRenderer::flush()
-	{
-		while (!m_RenderQueue.empty())
+		void Simple2dRenderer::submit(const Renderable2d* renderable)
 		{
-			const Renderable2d* renderable = m_RenderQueue.front();
-			renderable->getVAO()->bind();
-			renderable->getIBO()->bind();
+			m_RenderQueue.push_back((StaticSprite*)renderable);
+		}
 
-			renderable->getShader().setUniformMat4("ml_matrix", Maths::mat4::translation(renderable->getPosition()));
-			glDrawElements(GL_TRIANGLES, renderable->getIBO()->getCount(), GL_UNSIGNED_SHORT, nullptr);
+		void Simple2dRenderer::flush()
+		{
+			while (!m_RenderQueue.empty())
+			{
+				const StaticSprite* sprite = m_RenderQueue.front();
+				sprite->getVAO()->bind();
+				sprite->getIBO()->bind();
 
-			renderable->getVAO()->unbind();
-			renderable->getIBO()->unbind();
+				sprite->getShader().setUniformMat4("ml_matrix", Maths::mat4::translation(sprite->getPosition())); 
+				glDrawElements(GL_TRIANGLES, sprite->getIBO()->getCount(), GL_UNSIGNED_SHORT, nullptr);
 
-			m_RenderQueue.pop_front();
+				sprite->getIBO()->unbind();
+				sprite->getVAO()->unbind();
+
+				m_RenderQueue.pop_front();
+			}
 		}
 	}
-}}
+}

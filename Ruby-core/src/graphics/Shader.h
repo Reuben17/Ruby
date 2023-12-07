@@ -1,35 +1,42 @@
 #pragma once
 
-#include <GL/glew.h>
-#include "../utils/fileutils.h"
-#include "../maths/maths.h"
-#include <vector>
 #include <iostream>
+#include <vector>
+#include <GL/glew.h>
 
-namespace Ruby{ namespace Graphics{
+#include "../Maths/Maths.h"
+#include "../utils/fileutils.h"
 
-	class Shader
-	{
-	private:
-		GLuint m_ShaderID;
-		const char* m_VertPath;
-		const char* m_FragPath;
-	public:
-		Shader(const char* vertPath, const char* fragPath);
-		~Shader();
+namespace Ruby {
+	namespace Graphics {
 
-		void setUniform1i(const char* name, int value);
-		void setUniform1f(const char* name, float value);
-		void setUniform2f(const char* name, const Maths::vec2& vector);
-		void setUniform3f(const char* name, const Maths::vec3& vector);
-		void setUniform4f(const char* name, const Maths::vec4& vector);
-		void setUniformMat4(const char* name, const Maths::mat4& matrix);
+		class Shader
+		{
+		private:
+			
+			const char* m_VertPath;
+			const char* m_FragPath;
+		public:
+			GLuint m_ShaderID;
+			Shader(const char* vertPath, const char* fragPath);
+			~Shader();
 
-		void enable() const;
-		void disable() const;
-	private:
-		GLuint load();
-		GLint getUniformLocation(const GLchar* name);
-	};
 
-} }
+			void setUniform1f(const GLchar* name, float value);
+			void setUniform1fv(const GLchar* name, float * value, int count);
+			void setUniform1i(const GLchar* name, int value);
+			void setUniform1iv(const GLchar* name, int* value, int count);
+			void setUniform2f(const GLchar* name, const Maths::vec2& vector);
+			void setUniform3f(const GLchar* name, const Maths::vec3& vector);
+			void setUniform4f(const GLchar* name, const Maths::vec4& vector);
+			void setUniformMat4(const GLchar* name, const Maths::mat4& matrix);
+
+			void enable() const;
+			void disable() const;
+		private:
+			GLuint load();
+			GLint getUniformLocation(const GLchar* name);
+		};
+
+	}
+}
