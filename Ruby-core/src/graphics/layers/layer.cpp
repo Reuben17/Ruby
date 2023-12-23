@@ -27,6 +27,7 @@ namespace Ruby { namespace Graphics {
 		m_Shader->enable();
 
 		m_Renderer->begin();
+
 		for (const Renderable2d* renderable : m_Renderables)
 		{
 			renderable->submit(m_Renderer);

@@ -16,7 +16,7 @@
 #include "src/graphics/layers/group.h"
 #include <FreeImage.h>
 #include "src/graphics/texture.h"
-
+#include "src/graphics/label.h"
 
 #define TEST_50K_SPRITES 0
 #define TEST_PRETTY 1
@@ -56,15 +56,24 @@ int main()
 	{
 		for (float x = -16.0f; x < 16.0f; x ++)
 		{
-		//	layer.add(new Ruby::Graphics::Sprite(x, y, 0.9f, 0.9f, Ruby::Maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1)));
-			if (rand() % 4 == 0)
-				layer.add(new Ruby::Graphics::Sprite(x, y, 0.9f, 0.9f, Ruby::Maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1)));
-			else
-				layer.add(new Ruby::Graphics::Sprite(x, y, 0.9f, 0.9f, textures[rand() % 3]));
+			layer.add(new Ruby::Graphics::Sprite(x, y, 0.9f, 0.9f, Ruby::Maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1)));
+			//if (rand() % 4 == 0)
+				//layer.add(new Ruby::Graphics::Sprite(x, y, 0.9f, 0.9f, Ruby::Maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1)));
+			//else
+				//layer.add(new Ruby::Graphics::Sprite(x, y, 0.9f, 0.9f, textures[rand() % 3]));
 		}
 	}
 #endif
 	
+	Ruby::Graphics::Group* g = new Ruby::Graphics::Group(Ruby::Maths::mat4::translation(Ruby::Maths::vec3(-15.8f, 6.5f, 0.0f)));
+	Ruby::Graphics::Label* fps = new Ruby::Graphics::Label("", 0.4f, 0.4f, Ruby::Maths::vec4(1, 1, 0, 1));
+	g->add(new Ruby::Graphics::Sprite(0, 0, 6, 2.0f, Ruby::Maths::vec4(0.3f, 0.3f, 0.3f, 0.0f)));
+	g->add(fps);
+
+	layer.add(g);
+
+
+
 	GLint texIDs[] =
 	{
 		0,1,2,3,4,5,6,7,8,9
@@ -76,7 +85,7 @@ int main()
 	Ruby::Timer time;
 	float timer = 0;
 	unsigned int frames = 0;
-
+	
 	while (!window.Closed())
 	{
 		window.Clear();
@@ -95,6 +104,7 @@ int main()
 		if (time.elapsed() - timer > 1.0f)
 		{
 			timer += 1.0f;
+			fps->text = std::to_string(frames) + "fps";
 			printf("%d fps\n", frames);
 			frames = 0;
 		}

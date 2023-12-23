@@ -4,6 +4,8 @@
 #include "renderer2d.h"
 #include "Renderable2d.h"
 
+#include "../../ext/freetype-gl/freetype-gl.h"
+
 namespace Ruby { namespace Graphics {
 
 #define RENDERER_MAX_SPRITES	60000
@@ -26,6 +28,9 @@ namespace Ruby { namespace Graphics {
 		GLsizei m_IndexCount;
 		VertexData* m_Buffer;
 		std::vector<GLuint> m_TextureSlots;
+		ftgl::texture_atlas_t* m_FTAtlas;
+		ftgl::texture_font_t* m_FTFont;
+
 	private:
 		void init();
 	public:
@@ -34,6 +39,7 @@ namespace Ruby { namespace Graphics {
 
 		void begin() override;
 		void submit(const Renderable2d* renderable) override;
+		void drawString(const std::string& text, const Maths::vec3& position, const Maths::vec4& color) override;
 		void end() override;
 		void flush() override;
 	};

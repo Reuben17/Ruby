@@ -30,12 +30,13 @@ namespace Ruby {
 			Ruby::Graphics::Texture* m_Texture;
 		protected:
 			Renderable2d() 
+				:m_Texture(nullptr)
 			{
 				setUVDefaults();
 			}
 		public:
 			Renderable2d(Maths::vec3 position, Maths::vec2 size, Maths::vec4 color)
-				:m_Position(position), m_Size(size), m_Color(color)
+				:m_Position(position), m_Size(size), m_Color(color),m_Texture(nullptr)
 			{
 				setUVDefaults();
 			}
@@ -51,7 +52,7 @@ namespace Ruby {
 			inline const Maths::vec2& getSize() const { return m_Size; }
 			inline const Maths::vec4& getColor() const { return m_Color; }
 			inline const std::vector<Maths::vec2>& getUV() const { return m_UV; }
-			inline const GLuint getTID() const { return m_Texture == nullptr ? 0 : m_Texture->getID(); }
+			inline const GLuint getTID() const { return m_Texture ?  m_Texture->getID(): 0; }
 		private:
 			void setUVDefaults()
 			{

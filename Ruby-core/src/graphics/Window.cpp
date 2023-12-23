@@ -86,6 +86,9 @@ namespace Ruby { namespace Graphics {
 			std::cout << "Failed to initialize GLEW!" << std::endl;
 		}
 
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		std::cout << "GL VERSION: " << glGetString(GL_VERSION) << std::endl;
 		return true;
     }
