@@ -19,6 +19,8 @@ namespace Ruby {
 			virtual ~Layer();
 			virtual void add(Renderable2d* renderable);
 			virtual void render();
+
+			inline const std::vector<Renderable2d*>& getRenderables() const { return m_Renderables; }
 		};
 
 }}

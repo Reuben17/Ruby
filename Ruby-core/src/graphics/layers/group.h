@@ -12,6 +12,7 @@ namespace Ruby {
 			Maths::mat4 m_TransformationMatrix;
 		public:
 			Group(const Maths::mat4& transform);
+			~Group();
 			void add(Renderable2d* renderable);
 			void submit(Renderer2d* renderer) const override;
 		};

@@ -3,6 +3,8 @@
 #include <vector>
 #include "GL/glew.h"
 #include "../maths/maths.h"
+#include "font.h"
+
 
 namespace Ruby { namespace Graphics {
 
@@ -38,7 +40,7 @@ namespace Ruby { namespace Graphics {
 
 		virtual void begin() {}
 		virtual void submit(const Renderable2d* renderable) = 0;
-		virtual void drawString(const std::string& text, const Maths::vec3& position, const Maths::vec4& color) {}
+		virtual void drawString(const std::string& text, const Maths::vec3& position, const Font& font, unsigned int color) {}
 		virtual void end() {}
 		virtual void flush() = 0;
 	};
