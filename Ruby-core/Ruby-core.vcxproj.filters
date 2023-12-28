@@ -66,6 +66,12 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{265d6f13-a424-45d8-8527-fa8069a7ee50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ext\gorilla-audio">
+      <UniqueIdentifier>{97840d36-2a06-4705-8edd-760e190b62af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ext\gorilla-audio">
+      <UniqueIdentifier>{c54b7c75-658d-456d-b4de-c8d959f509d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -260,6 +266,24 @@
     <ClCompile Include="src\graphics\FontManager.cpp">
       <Filter>Source Files\graphics</Filter>
     </ClCompile>
+    <ClCompile Include="ext\gorilla-audio\ga.c">
+      <Filter>Source Files\ext\gorilla-audio</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\gorilla-audio\devices\ga_openal.c">
+      <Filter>Source Files\ext\gorilla-audio</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\gorilla-audio\ga_stream.c">
+      <Filter>Source Files\ext\gorilla-audio</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\gorilla-audio\gau.c">
+      <Filter>Source Files\ext\gorilla-audio</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\gorilla-audio\common\gc_common.c">
+      <Filter>Source Files\ext\gorilla-audio</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\gorilla-audio\common\gc_thread.c">
+      <Filter>Source Files\ext\gorilla-audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\freetype\include\ft2build.h">
@@ -381,6 +405,27 @@
     </ClInclude>
     <ClInclude Include="src\graphics\FontManager.h">
       <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\gorilla-audio\ga.h">
+      <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\gorilla-audio\ga_internal.h">
+      <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\gorilla-audio\devices\ga_openal.h">
+      <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\gorilla-audio\gau.h">
+      <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\gorilla-audio\common\gc_common.h">
+      <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\gorilla-audio\common\gc_thread.h">
+      <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\gorilla-audio\common\gc_types.h">
+      <Filter>Header Files\ext\gorilla-audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

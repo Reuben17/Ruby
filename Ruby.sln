@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ruby-core", "Ruby-core\Ruby-core.vcxproj", "{AD106E31-891D-41D3-B011-B480CC53F05A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libvorbis", "libvorbis\libvorbis.vcxproj", "{BC0D9211-D12C-4493-833A-A9F2674339FC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libogg", "libogg\libogg.vcxproj", "{B05D3A25-E51C-4572-B805-21AD1115B9CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +25,22 @@ Global
 		{AD106E31-891D-41D3-B011-B480CC53F05A}.Release|x64.Build.0 = Release|x64
 		{AD106E31-891D-41D3-B011-B480CC53F05A}.Release|x86.ActiveCfg = Release|Win32
 		{AD106E31-891D-41D3-B011-B480CC53F05A}.Release|x86.Build.0 = Release|Win32
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Debug|x64.ActiveCfg = Debug|x64
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Debug|x64.Build.0 = Debug|x64
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Debug|x86.ActiveCfg = Debug|Win32
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Debug|x86.Build.0 = Debug|Win32
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Release|x64.ActiveCfg = Release|x64
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Release|x64.Build.0 = Release|x64
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Release|x86.ActiveCfg = Release|Win32
+		{BC0D9211-D12C-4493-833A-A9F2674339FC}.Release|x86.Build.0 = Release|Win32
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Debug|x64.ActiveCfg = Debug|x64
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Debug|x64.Build.0 = Debug|x64
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Debug|x86.ActiveCfg = Debug|Win32
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Debug|x86.Build.0 = Debug|Win32
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Release|x64.ActiveCfg = Release|x64
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Release|x64.Build.0 = Release|x64
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Release|x86.ActiveCfg = Release|Win32
+		{B05D3A25-E51C-4572-B805-21AD1115B9CF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

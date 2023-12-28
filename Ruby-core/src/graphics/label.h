@@ -7,6 +7,7 @@ namespace Ruby {
 		class Label: public Renderable2d
 		{
 		public:
+			Label(std::string text, float x, float y,unsigned int color);
 			Label(std::string text,float x,float y,Font* font ,unsigned int color);
 			Label(std::string text, float x, float y, const std::string& font, unsigned int color);
 			Label(std::string text, float x, float y, const std::string& font,unsigned int size, unsigned int color);

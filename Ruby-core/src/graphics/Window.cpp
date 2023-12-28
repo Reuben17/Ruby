@@ -31,7 +31,8 @@ namespace Ruby { namespace Graphics {
 
 	Window::~Window()
 	{
-		glfwTerminate();
+		Ruby::Graphics::FontManager::clear();
+		glfwTerminate();	
 	}
 	bool Window::isKeyPressed(unsigned int keycode) const
 	{
