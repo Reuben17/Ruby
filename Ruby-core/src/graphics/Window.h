@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "FontManager.h"
+#include "../audio/SoundManager.h"
 
 namespace Ruby { namespace Graphics {
 

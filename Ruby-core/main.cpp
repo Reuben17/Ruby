@@ -18,11 +18,12 @@
 #include "src/graphics/texture.h"
 #include "src/graphics/label.h"
 #include "src/graphics/FontManager.h"
+#include "src/audio/SoundManager.h"
 
 #define TEST_50K_SPRITES 0
 #define TEST_PRETTY 1
 
-#if 0
+#if 1
 	int main()
 	{
 		Ruby::Graphics::Window window("Ruby!", 960, 540);
@@ -34,7 +35,6 @@
 		shader->setUniform2f("light_pos", Ruby::Maths::vec2(4.0f, 1.5f));
 
 		Ruby::Graphics::Tilelayer layer(shader);
-
 
 #if TEST_50K_SPRITES
 		for (float y = -9.0f; y < 9.0f; y += 0.1)
@@ -87,9 +87,15 @@
 		shader->enable();
 		shader->setUniform1iv("textures", texIDs, 10);
 
+		Ruby::Audio::SoundManager::add(new Ruby::Audio::Sound("Evacuate", "Evacuate.wav"));
+		Ruby::Audio::Sound* song = Ruby::Audio::SoundManager::get("Evacuate");
+		song->play();
+		
 		Ruby::Timer time;
 		float timer = 0;
 		unsigned int frames = 0;
+		float gain = 0.5;
+		song->setGain(gain);
 
 		while (!window.Closed())
 		{
@@ -101,6 +107,24 @@
 
 			layer.render();
 
+			if (window.isKeyTyped(GLFW_KEY_P))
+			{
+				std::cout << "Pressed" << std::endl;
+				song->play();
+			}
+
+			if (window.isKeyTyped(GLFW_KEY_UP))
+			{
+				gain += 0.5;
+				song->setGain(gain);
+			}
+
+			if (window.isKeyTyped(GLFW_KEY_DOWN))
+			{
+				gain -= 0.5;
+				song->setGain(gain);
+			}
+				
 			window.Update();
 
 			frames++;

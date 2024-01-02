@@ -68,6 +68,8 @@
     <ClCompile Include="ext\gorilla-audio\ga.c" />
     <ClCompile Include="ext\gorilla-audio\gau.c" />
     <ClCompile Include="ext\gorilla-audio\ga_stream.c" />
+    <ClCompile Include="src\audio\sound.cpp" />
+    <ClCompile Include="src\audio\SoundManager.cpp" />
     <ClCompile Include="src\graphics\font.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\graphics\batchrenderer2d.cpp" />
@@ -111,6 +113,8 @@
     <ClInclude Include="ext\gorilla-audio\ga.h" />
     <ClInclude Include="ext\gorilla-audio\gau.h" />
     <ClInclude Include="ext\gorilla-audio\ga_internal.h" />
+    <ClInclude Include="src\audio\sound.h" />
+    <ClInclude Include="src\audio\SoundManager.h" />
     <ClInclude Include="src\graphics\font.h" />
     <ClInclude Include="src\graphics\batchrenderer2d.h" />
     <ClInclude Include="src\graphics\buffers\buffer.h" />
@@ -137,6 +141,7 @@
     <ClInclude Include="src\maths\vec4.h" />
     <ClInclude Include="src\utils\fileutils.h" />
     <ClInclude Include="src\utils\ImageLoad.h" />
+    <ClInclude Include="src\utils\stringutils.h" />
     <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
   <ItemGroup>

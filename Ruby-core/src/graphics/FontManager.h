@@ -15,7 +15,7 @@ namespace Ruby {
 			static Font* get(const std::string& name,unsigned int size);
 			static void clear();
 		private:
-			FontManager();
+			FontManager() { }
 		};
 	}
 }

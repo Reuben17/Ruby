@@ -72,6 +72,12 @@
     <Filter Include="Source Files\ext\gorilla-audio">
       <UniqueIdentifier>{c54b7c75-658d-456d-b4de-c8d959f509d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\audio">
+      <UniqueIdentifier>{a33ffd53-92e2-4826-9e78-941e730b2ee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\audio">
+      <UniqueIdentifier>{e4aee1cc-4a8b-4266-9770-51dbb345bdf6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -284,6 +290,12 @@
     <ClCompile Include="ext\gorilla-audio\common\gc_thread.c">
       <Filter>Source Files\ext\gorilla-audio</Filter>
     </ClCompile>
+    <ClCompile Include="src\audio\SoundManager.cpp">
+      <Filter>Source Files\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\sound.cpp">
+      <Filter>Source Files\audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\freetype\include\ft2build.h">
@@ -426,6 +438,15 @@
     </ClInclude>
     <ClInclude Include="ext\gorilla-audio\common\gc_types.h">
       <Filter>Header Files\ext\gorilla-audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\audio\SoundManager.h">
+      <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\audio\sound.h">
+      <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\stringutils.h">
+      <Filter>Header Files\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

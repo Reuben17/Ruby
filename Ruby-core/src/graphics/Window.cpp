@@ -14,6 +14,7 @@ namespace Ruby { namespace Graphics {
 		//glClearColor(0.6f, 0.3f, 0.45f, 0.5f);
 
 		Ruby::Graphics::FontManager::add(new Ruby::Graphics::Font("Arial", "arial.ttf", 50));
+		Ruby::Audio::SoundManager::init();
 	
 		for (int i = 0; i < MAX_KEYS; i++)
 		{
@@ -32,6 +33,7 @@ namespace Ruby { namespace Graphics {
 	Window::~Window()
 	{
 		Ruby::Graphics::FontManager::clear();
+		Ruby::Audio::SoundManager::clear();
 		glfwTerminate();	
 	}
 	bool Window::isKeyPressed(unsigned int keycode) const
@@ -90,8 +92,8 @@ namespace Ruby { namespace Graphics {
 			std::cout << "OpenGL Error: " << error << std::endl;
 
 		glfwPollEvents();
-		//glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
 		glfwSwapBuffers(m_Window);
+		Ruby::Audio::SoundManager::update();
 	}
 
     bool Window::Init()
