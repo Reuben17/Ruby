@@ -1,7 +1,14 @@
 #pragma once
 
 #include <vector>
-#include "GL/glew.h"
+
+#ifdef RUBY_EMSCRIPTEN
+#define GLFW_INCLUDE_ES3
+#include <GLFW/glfw3.h>
+#else
+#include <GL/glew.h>
+#endif // RUBY_EMSCRITPEN
+
 #include "../maths/maths.h"
 #include "font.h"
 
@@ -21,6 +28,7 @@ namespace Ruby { namespace Graphics {
 			m_TransformationBack = &m_TransformationStack.back();
 		}
 	public:
+		virtual ~Renderer2d() {}
 		void push(const Maths::mat4& matrix,bool override = false)
 		{
 			if (override)

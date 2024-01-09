@@ -27,7 +27,7 @@ namespace Ruby {
 			Maths::vec2 m_Size;
 			unsigned int m_Color;
 			std::vector<Maths::vec2> m_UV;
-			Ruby::Graphics::Texture* m_Texture;
+			Texture* m_Texture;
 		protected:
 			Renderable2d() 
 				:m_Texture(nullptr)

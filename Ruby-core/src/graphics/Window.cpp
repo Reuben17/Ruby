@@ -13,7 +13,15 @@ namespace Ruby { namespace Graphics {
 			glfwTerminate();
 		//glClearColor(0.6f, 0.3f, 0.45f, 0.5f);
 
+#ifdef RUBY_EMSCRIPTEN
+		FontManager::add(new Font("Arial", "res/Arial.ttf", 32));
+#else
 		Ruby::Graphics::FontManager::add(new Ruby::Graphics::Font("Arial", "arial.ttf", 50));
+#endif
+
+#ifdef RUBY_EMSCRIPTEN
+		FreeImage_Initialise();
+#endif
 		Ruby::Audio::SoundManager::init();
 	
 		for (int i = 0; i < MAX_KEYS; i++)
@@ -116,10 +124,12 @@ namespace Ruby { namespace Graphics {
 		glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 		//glfwSwapInterval(0);
 
+#ifndef  RUBY_EMSCRIPTEN
 		if (glewInit()!=GLEW_OK)
 		{
 			std::cout << "Failed to initialize GLEW!" << std::endl;
 		}
+#endif
 
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

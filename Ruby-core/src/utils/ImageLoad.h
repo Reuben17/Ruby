@@ -1,6 +1,7 @@
 #pragma once
 
 #include <FreeImage.h>
+#include <FreeImage/Utilities.h>
 
 namespace Ruby {
 
@@ -33,6 +34,11 @@ namespace Ruby {
 		//get the image width and height
 		*width = FreeImage_GetWidth(dib);
 		*height = FreeImage_GetHeight(dib);
+		int bits = FreeImage_GetBPP(dib);
+
+#ifdef RUBY_EMSCRIPTEN
+			SwapRedBlue32(dib);
+#endif
 
 //Maintenance Episode 
 		//int bits = FreeImage_GetBPP(dib);

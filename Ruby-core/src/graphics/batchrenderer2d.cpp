@@ -25,13 +25,13 @@ namespace Ruby {
 			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)0);
 
 			glEnableVertexAttribArray(SHADER_UV_INDEX);
-			glVertexAttribPointer(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::uv)));
+			glVertexAttribPointer(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, uv)));
 
 			glEnableVertexAttribArray(SHADER_TID_INDEX);
-			glVertexAttribPointer(SHADER_TID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
+			glVertexAttribPointer(SHADER_TID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, tid)));
 
 			glEnableVertexAttribArray(SHADER_COLOR_INDEX);
-			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData,VertexData::color)));
+			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData,color)));
 
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -54,11 +54,19 @@ namespace Ruby {
 			m_IBO = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
 			glBindVertexArray(0);
 
+#ifdef RUBY_EMSCRIPTEN
+			m_BufferBase = new VertexData[RENDERER_MAX_SPRITES * 4];
+#endif
+
 		}
 		void BatchRenderer2d::begin()
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+#ifdef RUBY_EMSCRIPTEN
+			m_Buffer = m_BufferBase;
+#else
 			m_Buffer = (VertexData*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+#endif
 		}
 		void BatchRenderer2d::submit(const Renderable2d* renderable)
 		{
@@ -84,7 +92,7 @@ namespace Ruby {
 
 				if (!found)
 				{
-					if (m_TextureSlots.size() >= 32)
+					if (m_TextureSlots.size() >= RENDERER_MAX_TEXTURES)
 					{
 						end();
 						flush();
@@ -151,9 +159,8 @@ namespace Ruby {
 				ts = (float)(m_TextureSlots.size() - 1);
 			}
 
-			float scaleX = 960.0f / 32.0f;
-			float scaleY = 540.0f / 16.0f;
-
+			const Maths::vec2& scale = font.getScale();
+		
 			float x = position.x;
 
 			ftgl::texture_font_t* ftfont = font.getFTFont();
@@ -167,13 +174,13 @@ namespace Ruby {
 					if (i > 0)
 					{
 						float kerning = texture_glyph_get_kerning(glyph, text[i - 1]);
-						x += kerning / scaleX;
+						x += kerning / scale.x;
 					}
 
-					float x0 = x + glyph->offset_x /scaleX;
-					float y0 = position.y + glyph->offset_y /scaleY;
-					float x1 = x0 + glyph->width/scaleX;
-					float y1 = y0 - glyph->height/scaleY;
+					float x0 = x + glyph->offset_x /scale.x;
+					float y0 = position.y + glyph->offset_y /scale.y;
+					float x1 = x0 + glyph->width/scale.x;
+					float y1 = y0 - glyph->height/scale.y;
 
 					float u0 = glyph->s0;
 					float v0 = glyph->t0;
@@ -206,13 +213,19 @@ namespace Ruby {
 
 					m_IndexCount += 6;
 
-					x += glyph->advance_x / scaleX;
+					x += glyph->advance_x / scale.x;
 				}
 			}
 		}
 		void BatchRenderer2d::end()
 		{
+#ifdef RUBY_EMSCRIPTEN
+			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+			glBufferSubData(GL_ARRAY_BUFFER, 0, (m_Buffer - m_BufferBase) * RENDERER_VERTEX_SIZE, m_BufferBase);
+			m_Buffer = m_BufferBase;
+#else
 			glUnmapBuffer(GL_ARRAY_BUFFER);
+#endif
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
 		void BatchRenderer2d::flush()
@@ -232,6 +245,7 @@ namespace Ruby {
 			glBindVertexArray(0);
 
 			m_IndexCount = 0;
+			//m_TextureSlots.clear();
 		}
 
 	}

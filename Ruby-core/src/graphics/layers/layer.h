@@ -14,8 +14,8 @@ namespace Ruby {
 			Shader* m_Shader;
 			Maths::mat4 m_ProjectionMatrix;
 		protected:
-			Layer(Renderer2d* renderer, Shader* shader, Maths::mat4 projectionMatrix);
 		public:
+			Layer(Renderer2d* renderer, Shader* shader, Maths::mat4 projectionMatrix);
 			virtual ~Layer();
 			virtual void add(Renderable2d* renderable);
 			virtual void render();

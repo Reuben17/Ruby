@@ -227,13 +227,7 @@
     <ClCompile Include="src\graphics\layers\layer.cpp">
       <Filter>Source Files\graphics\layers</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\layers\tilelayer.cpp">
-      <Filter>Source Files\graphics\layers</Filter>
-    </ClCompile>
     <ClCompile Include="src\graphics\sprite.cpp">
-      <Filter>Source Files\graphics\renderables</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\static_sprite.cpp">
       <Filter>Source Files\graphics\renderables</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\label.cpp">
@@ -255,9 +249,6 @@
       <Filter>Source Files\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\Shader.cpp">
-      <Filter>Source Files\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\simple2drenderer.cpp">
       <Filter>Source Files\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\texture.cpp">
@@ -295,6 +286,12 @@
     </ClCompile>
     <ClCompile Include="src\audio\sound.cpp">
       <Filter>Source Files\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="tilelayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\game.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -373,9 +370,6 @@
     <ClInclude Include="src\graphics\texture.h">
       <Filter>Header Files\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\simple2drenderer.h">
-      <Filter>Header Files\graphics</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\Shader.h">
       <Filter>Header Files\graphics</Filter>
     </ClInclude>
@@ -383,9 +377,6 @@
       <Filter>Header Files\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\layers\group.h">
-      <Filter>Header Files\graphics\layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\tilelayer.h">
       <Filter>Header Files\graphics\layers</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\layers\layer.h">
@@ -404,9 +395,6 @@
       <Filter>Header Files\graphics\renderables</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\sprite.h">
-      <Filter>Header Files\graphics\renderables</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\static_sprite.h">
       <Filter>Header Files\graphics\renderables</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\Renderable2d.h">
@@ -448,6 +436,12 @@
     <ClInclude Include="src\utils\stringutils.h">
       <Filter>Header Files\utils</Filter>
     </ClInclude>
+    <ClInclude Include="tilelayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Ruby.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic.vert">
@@ -456,5 +450,7 @@
     <None Include="src\shaders\basic.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="src\shaders\basic.es3.frag" />
+    <None Include="src\shaders\basic.es3.vert" />
   </ItemGroup>
 </Project>
